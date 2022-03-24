@@ -1,0 +1,21 @@
+{
+"students": [
+    {
+        "id":1,
+        "name": "Vasia",
+        "surname": "Pupkin",
+        "picUrl":"https://www.w3schools.com/howto/img_avatar.png",
+        "age": 22,
+        "gender": "male"
+      },
+      {
+        "id":2,
+        "name": "Masha",
+        "surname": "Cohen",
+        "picUrl":"https://www.w3schools.com/howto/img_avatar.png",
+        "age": 25,
+        "gender": "female"
+      }
+
+    ]
+}

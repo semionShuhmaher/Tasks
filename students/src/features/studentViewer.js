@@ -1,8 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 import './studentViewer.css'
+import {StudentEditor} from './studentEditor'
 
 export const StudentViewer = (props) =>{
-    const{name, surname, age, gender, picUrl} = props.student
+    const{name, surname, age, gender, picUrl, id} = props.student
+    const deleteStudent = props.onDelete
+    const [edit, setEdit] = useState(false)
+
     function checkGender()
     {
         if (gender === 'female'){
@@ -13,7 +17,14 @@ export const StudentViewer = (props) =>{
         }
 
     }
-        return(
+
+    const toggleEdit = () => {setEdit(!edit)}
+    const updateStudent = () => {
+        return false
+    }
+
+    if(!edit) {
+    return(
             <div className="card">
                 <img src={picUrl} alt="Avatar" className='picStyle' /> 
                 <div className="container">
@@ -21,7 +32,16 @@ export const StudentViewer = (props) =>{
                     <p className={age >= 10 ? 'old' : 'young'}>Age: {age}</p>
                     <p>Gender: {gender}
                     {checkGender()}</p>
+                    <button onClick={()=>deleteStudent(id)}>Delete Me</button>
+                    <button onClick={toggleEdit}>Edit Me</button>
                 </div>
           </div>
-        )
+        )} else {
+    return(
+    <div>
+    <StudentEditor onUpdate = {updateStudent} init = {props.student}/>
+       <button onClick={toggleEdit}>View Me</button>
+    </div>
+    )
+  }
 }

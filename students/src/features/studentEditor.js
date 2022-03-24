@@ -74,18 +74,18 @@ export const StudentEditor = (props) =>{
     return(
         <div className="myform">
             <label htmlFor="nameField">First Name</label>
-            <input type="text" onChange={setNewName} id = "nameField"></input><br></br>
+            <input type="text" onChange={setNewName} value={student.name} id = "nameField"></input><br></br>
             <p className="errormessage">{errorMessages.name}</p><br></br>
 
             <label htmlFor="surnameField">Last Name</label>
-            <input  type="text" onChange={setNewSurName} id = "surnameField"></input><br></br>
+            <input  type="text" onChange={setNewSurName} value={student.surname} id = "surnameField"></input><br></br>
             <p className="errormessage">{errorMessages.surname}</p><br></br>
 
             <label htmlFor="newUrl">New URL</label>
-            <input  className="myUrl" type="text" onChange={setNewUrl} id = "newUrl"></input><br></br>
+            <input  className="myUrl" type="text" value={student.picUrl} onChange={setNewUrl} id = "newUrl"></input><br></br>
 
             <label htmlFor="newAge">New Age</label>
-            <input  type="number" onChange={setNewAge} id = "newAge" min = '1' max = '121'></input><br></br>
+            <input  type="number" onChange={setNewAge} value={student.age} id = "newAge" min = '1' max = '121'></input><br></br>
 
             <label htmlFor="newGender">New Gender</label>
             <select value={student.gender} onChange = {setNewGender}>
