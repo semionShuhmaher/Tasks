@@ -5,6 +5,7 @@ import {StudentEditor} from './studentEditor'
 export const StudentViewer = (props) =>{
     const{name, surname, age, gender, picUrl, id} = props.student
     const deleteStudent = props.onDelete
+    const refreshList = props.onRefresh
     const [edit, setEdit] = useState(false)
 
     function checkGender()
@@ -19,9 +20,6 @@ export const StudentViewer = (props) =>{
     }
 
     const toggleEdit = () => {setEdit(!edit)}
-    const updateStudent = () => {
-        return false
-    }
 
     if(!edit) {
     return(
@@ -39,7 +37,8 @@ export const StudentViewer = (props) =>{
         )} else {
     return(
     <div>
-    <StudentEditor onUpdate = {updateStudent} init = {props.student}/>
+        <StudentEditor init={props.student} onCancel={toggleEdit} onRefresh={refreshList} />
+    {/* <StudentEditor onUpdate = {updateStudent} init = {props.student}/> */}
        <button onClick={toggleEdit}>View Me</button>
     </div>
     )

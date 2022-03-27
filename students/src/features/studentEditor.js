@@ -2,11 +2,34 @@ import React, { useState } from "react";
 //import React,{useState} from "react";
 import './studentEditor.css'
 const picUrl = 'https://www.w3schools.com/howto/img_avatar.png'
+const backendUrl = process.env.REACT_APP_SERVER_URL
+
 
 export const StudentEditor = (props) =>{
-    const {onUpdate, init} = props
+    const {onUpdate, init, onCancel, onRefresh} = props
     const [student,setStudent] = useState(init)
     const [errorMessages,setErrorMessages] = useState({})
+
+    const addStudent = (student) => {
+        console.log(student)
+        const httpMethod = student.id ? "PUT" : "POST"
+        const url = student.id ? `${backendUrl}/${student.id}` : backendUrl
+        fetch(url,
+        {
+          headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+          },
+            method: httpMethod,
+            body: JSON.stringify(student)
+        }
+        )
+        .then(responce => {
+            onRefresh()
+            onCancel()
+          console.log(responce)
+        })
+      }
 
     const validate = (student)=>{
         let hasErrors = false
@@ -67,7 +90,7 @@ export const StudentEditor = (props) =>{
     const updateStudent = () =>{
         if(!validate(student))
         {
-            onUpdate(student)
+            addStudent(student)
         }
     }
 
@@ -92,8 +115,7 @@ export const StudentEditor = (props) =>{
                 <option value="male">Male</option>
                 <option value="female">Female</option>
             </select><br></br>
-
-            <br></br><br></br><button onClick={updateStudent}>Submit</button>
+            <br></br><br></br><button onClick={updateStudent}>Submit</button> <button onClick={onCancel}>Cancel</button>
         </div>
 
     )

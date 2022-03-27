@@ -2,12 +2,14 @@ import React,{useState,useEffect} from "react";
 import {StudentViewer} from './studentViewer'
 import {StudentEditor} from './studentEditor'
 
+
 export const StudentList = ()=>
 {
   const [students, setStudents] = useState([])
+  const [viewNew, setViewNew] = useState(false)
 
     const refreshList = () => {
-      fetch('http://localhost:3300/students/', 
+      fetch(process.env.REACT_APP_SERVER_URL, 
       {
         method:"GET"
       })
@@ -20,7 +22,8 @@ export const StudentList = ()=>
     }, [])
 
     const deleteById = (id) => {
-      fetch('http://localhost:3300/students/' + id,
+      const backendUrl = process.env.REACT_APP_SERVER_URL + '/' + id
+      fetch(backendUrl,
       {
           method: "DELETE"
       }
@@ -31,29 +34,11 @@ export const StudentList = ()=>
         })
     }
 
-    const updateStudent = () => {
-      return false
+    const togleNewForm = () => {
+      setViewNew(!viewNew)
     }
 
-    const addStudent = (student) => {
-      console.log(student)
-      fetch('http://localhost:3300/students/',
-      {
-        headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-        },
-          method: "POST",
-          body: JSON.stringify(student)
-      }
-      )
-      .then(responce => {
-        console.log(responce)
-        refreshList()
-      })
-    }
-
-    const editStudent = {}
+    const editStudent = {gender:'male'}
 
     return(
     <div>
@@ -61,10 +46,13 @@ export const StudentList = ()=>
        return <StudentViewer 
         student={element} 
         key={element.id} 
+        onRefresh={refreshList}
         onDelete={deleteById} />
      })}
-    <StudentEditor onUpdate = {addStudent} init = {editStudent}/>
-    {/* <StudentEditor /> */}
+     {
+        viewNew ? <StudentEditor init={editStudent} onCancel={togleNewForm} onRefresh={refreshList} /> :
+      <button onClick={togleNewForm} >New Student</button> 
+    }
 
      </div>
     )
