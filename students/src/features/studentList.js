@@ -49,10 +49,10 @@ export const StudentList = ()=>
         onRefresh={refreshList}
         onDelete={deleteById} />
      })}
-     {
+     {/* {
         viewNew ? <StudentEditor init={editStudent} onCancel={togleNewForm} onRefresh={refreshList} /> :
-      <button onClick={togleNewForm} >New Student</button> 
-    }
+        <button onClick={togleNewForm} >New Student</button> 
+    } */}
 
      </div>
     )

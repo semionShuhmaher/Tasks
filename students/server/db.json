@@ -5,7 +5,7 @@
       "name": "Dasha",
       "surname": "Cohen",
       "picUrl": "https://www.w3schools.com/howto/img_avatar.png",
-      "age": 25,
+      "age": "24",
       "gender": "female"
     },
     {
@@ -32,6 +32,5 @@
       "age": 101,
       "gender": "male"
     }
-  
   ]
 }

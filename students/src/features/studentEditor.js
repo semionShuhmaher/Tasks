@@ -33,27 +33,28 @@ export const StudentEditor = (props) =>{
 
     const validate = (student)=>{
         let hasErrors = false
-        setErrorMessages({})
+        let errors = {}
         //name
-        if(student.name.length < 2){
-            setErrorMessages({...errorMessages,name: 'Name is too short'})
+        if(!student.name || student.name.length < 2){
+            errors = {...errors,name: 'Name is too short'}
             hasErrors = true
         }
         else if((/[^A-Za-z]/.test(student.name)))
         {
-            setErrorMessages({...errorMessages,name: 'Name is illegal'})
+            errors = {...errors,name: 'Name is illegal'}
             hasErrors = true
         }
         //Surname
-        if(student.surname.length < 2){
-            setErrorMessages({...errorMessages,surname: 'Surname is too short'})
+        if(!student.surname || student.surname.length < 2){
+            errors = {...errors,surname: 'Surname is too short'}
             hasErrors = true
         }
         else if((/[^A-Za-z]/.test(student.surname)))
         {
-            setErrorMessages({...errorMessages,surname: 'Surname is illegal'})
+            errors = {...errors,name: 'Surname is illegal'}
             hasErrors = true
         }
+        setErrorMessages(errors)
         return hasErrors
     }
 

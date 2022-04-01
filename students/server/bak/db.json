@@ -1,21 +1,37 @@
 {
-"students": [
+  "students": [
     {
-        "id":1,
-        "name": "Vasia",
-        "surname": "Pupkin",
-        "picUrl":"https://www.w3schools.com/howto/img_avatar.png",
-        "age": 22,
-        "gender": "male"
-      },
-      {
-        "id":2,
-        "name": "Masha",
-        "surname": "Cohen",
-        "picUrl":"https://www.w3schools.com/howto/img_avatar.png",
-        "age": 25,
-        "gender": "female"
-      }
-
-    ]
+      "id": 2,
+      "name": "Dasha",
+      "surname": "Cohen",
+      "picUrl": "https://www.w3schools.com/howto/img_avatar.png",
+      "age": 25,
+      "gender": "female"
+    },
+    {
+      "id": 3,
+      "name": "Vasia",
+      "surname": "Pupkin",
+      "picUrl": "https://www.w3schools.com/howto/img_avatar.png",
+      "age": 7,
+      "gender": "male"
+    },
+    {
+      "id": 4,
+      "name": "Dafna",
+      "surname": "Levi",
+      "picUrl": "https://www.w3schools.com/howto/img_avatar.png",
+      "age": 55,
+      "gender": "female"
+    },
+    {
+      "id": 5,
+      "name": "Moshe",
+      "surname": "Mizrachi",
+      "picUrl": "https://www.w3schools.com/howto/img_avatar.png",
+      "age": 101,
+      "gender": "male"
+    }
+  
+  ]
 }
